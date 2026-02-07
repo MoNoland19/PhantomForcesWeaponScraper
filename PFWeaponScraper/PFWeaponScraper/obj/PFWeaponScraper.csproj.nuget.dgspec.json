@@ -1,0 +1,67 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\morga\\RiderProjects\\PhantomForcesWeaponScraper\\PFWeaponScraper\\PFWeaponScraper\\PFWeaponScraper.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\morga\\RiderProjects\\PhantomForcesWeaponScraper\\PFWeaponScraper\\PFWeaponScraper\\PFWeaponScraper.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\morga\\RiderProjects\\PhantomForcesWeaponScraper\\PFWeaponScraper\\PFWeaponScraper\\PFWeaponScraper.csproj",
+        "projectName": "PFWeaponScraper",
+        "projectPath": "C:\\Users\\morga\\RiderProjects\\PhantomForcesWeaponScraper\\PFWeaponScraper\\PFWeaponScraper\\PFWeaponScraper.csproj",
+        "packagesPath": "C:\\Users\\morga\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\morga\\RiderProjects\\PhantomForcesWeaponScraper\\PFWeaponScraper\\PFWeaponScraper\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\morga\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net10.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net10.0": {
+            "targetAlias": "net10.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "all"
+        },
+        "SdkAnalysisLevel": "10.0.100"
+      },
+      "frameworks": {
+        "net10.0": {
+          "targetAlias": "net10.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Users\\morga\\.dotnet\\sdk\\10.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
