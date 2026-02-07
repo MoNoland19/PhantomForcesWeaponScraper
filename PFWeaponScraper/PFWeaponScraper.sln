@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PFWeaponScraper", "PFWeaponScraper\PFWeaponScraper.csproj", "{23023EB3-3B3F-432B-8632-73AA9F497088}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeaponScraperTests", "WeaponScraperTests\WeaponScraperTests.csproj", "{31F71651-4CBA-458B-B78D-D6DA11FBEDA3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{23023EB3-3B3F-432B-8632-73AA9F497088}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23023EB3-3B3F-432B-8632-73AA9F497088}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23023EB3-3B3F-432B-8632-73AA9F497088}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31F71651-4CBA-458B-B78D-D6DA11FBEDA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F71651-4CBA-458B-B78D-D6DA11FBEDA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F71651-4CBA-458B-B78D-D6DA11FBEDA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F71651-4CBA-458B-B78D-D6DA11FBEDA3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
