@@ -1,3 +1,3 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-Console.WriteLine("Hello, World!");
+﻿var capture = new ScreenCaptureService();
+var img = capture.CaptureRegion(ScreenRegions.GunName);
+img.Save("gun.png");

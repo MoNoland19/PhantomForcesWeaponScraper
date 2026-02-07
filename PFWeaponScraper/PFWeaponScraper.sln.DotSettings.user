@@ -1,8 +1,15 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AJsonConverterOfT_002EReadCore_002Ecs_002Fl_003A_002E_002E_003F_002E_002E_003F_002E_002E_003FAppData_003FRoaming_003FJetBrains_003FRider2025_002E3_003Fresharper_002Dhost_003FSourcesCache_003Fa7e99f3da3fc9d80c1949ce87d548d992a745092d1c720f44952dbbd144437f_003FJsonConverterOfT_002EReadCore_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4838a81a_002D96ed_002D4ac7_002D9d3b_002Db1865640103f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Repository_LoadsWeaponsFromExistingFile" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=4838a81a_002D96ed_002D4ac7_002D9d3b_002Db1865640103f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Repository_LoadsWeaponsFromExistingFile" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.Storage.WeaponRepositoryTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.Utils.TextNormalizerTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.Services.WeaponBuilderTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=59ebf475_002Daae5_002D4945_002D86a8_002D23a1ec24dc75/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="WeaponBuilderTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.Services.WeaponBuilderTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=92c1c449_002D9187_002D4344_002D8d46_002D1ca3fc0614d7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="WeaponClassTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
