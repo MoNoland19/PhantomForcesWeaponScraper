@@ -1074,6 +1074,16 @@
             "related": ".xml"
           }
         }
+      },
+      "PFWeaponScraper/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/PFWeaponScraper.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PFWeaponScraper.dll": {}
+        }
       }
     }
   },
@@ -2267,11 +2277,17 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
+    },
+    "PFWeaponScraper/1.0.0": {
+      "type": "project",
+      "path": "../PFWeaponScraper/PFWeaponScraper.csproj",
+      "msbuildProject": "../PFWeaponScraper/PFWeaponScraper.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "MSTest >= 4.0.1"
+      "MSTest >= 4.0.1",
+      "PFWeaponScraper >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -2298,7 +2314,11 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\morga\\RiderProjects\\PhantomForcesWeaponScraper\\PFWeaponScraper\\PFWeaponScraper\\PFWeaponScraper.csproj": {
+              "projectPath": "C:\\Users\\morga\\RiderProjects\\PhantomForcesWeaponScraper\\PFWeaponScraper\\PFWeaponScraper\\PFWeaponScraper.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

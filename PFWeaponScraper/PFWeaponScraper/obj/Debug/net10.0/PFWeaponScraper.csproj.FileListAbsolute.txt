@@ -1,0 +1,15 @@
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\bin\Debug\net10.0\PFWeaponScraper.exe
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\bin\Debug\net10.0\PFWeaponScraper.deps.json
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\bin\Debug\net10.0\PFWeaponScraper.runtimeconfig.json
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\bin\Debug\net10.0\PFWeaponScraper.dll
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\bin\Debug\net10.0\PFWeaponScraper.pdb
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\obj\Debug\net10.0\PFWeaponScraper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\obj\Debug\net10.0\PFWeaponScraper.AssemblyInfoInputs.cache
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\obj\Debug\net10.0\PFWeaponScraper.AssemblyInfo.cs
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\obj\Debug\net10.0\PFWeaponScraper.csproj.CoreCompileInputs.cache
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\obj\Debug\net10.0\PFWeaponScraper.sourcelink.json
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\obj\Debug\net10.0\PFWeaponScraper.dll
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\obj\Debug\net10.0\refint\PFWeaponScraper.dll
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\obj\Debug\net10.0\PFWeaponScraper.pdb
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\obj\Debug\net10.0\PFWeaponScraper.genruntimeconfig.cache
+C:\Users\morga\RiderProjects\PhantomForcesWeaponScraper\PFWeaponScraper\PFWeaponScraper\obj\Debug\net10.0\ref\PFWeaponScraper.dll
