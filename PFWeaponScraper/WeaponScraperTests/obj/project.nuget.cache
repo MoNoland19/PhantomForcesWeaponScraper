@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Id3t/4iG5Yw=",
+  "dgSpecHash": "2DvIEqle2nQ=",
   "success": true,
   "projectFilePath": "C:\\Users\\morga\\RiderProjects\\PhantomForcesWeaponScraper\\PFWeaponScraper\\WeaponScraperTests\\WeaponScraperTests.csproj",
   "expectedPackageFiles": [
@@ -19,11 +19,15 @@
     "C:\\Users\\morga\\.nuget\\packages\\microsoft.testplatform.adapterutilities\\18.0.0\\microsoft.testplatform.adapterutilities.18.0.0.nupkg.sha512",
     "C:\\Users\\morga\\.nuget\\packages\\microsoft.testplatform.objectmodel\\18.0.0\\microsoft.testplatform.objectmodel.18.0.0.nupkg.sha512",
     "C:\\Users\\morga\\.nuget\\packages\\microsoft.testplatform.testhost\\18.0.0\\microsoft.testplatform.testhost.18.0.0.nupkg.sha512",
+    "C:\\Users\\morga\\.nuget\\packages\\microsoft.win32.systemevents\\10.0.2\\microsoft.win32.systemevents.10.0.2.nupkg.sha512",
     "C:\\Users\\morga\\.nuget\\packages\\mstest\\4.0.1\\mstest.4.0.1.nupkg.sha512",
     "C:\\Users\\morga\\.nuget\\packages\\mstest.analyzers\\4.0.1\\mstest.analyzers.4.0.1.nupkg.sha512",
     "C:\\Users\\morga\\.nuget\\packages\\mstest.testadapter\\4.0.1\\mstest.testadapter.4.0.1.nupkg.sha512",
     "C:\\Users\\morga\\.nuget\\packages\\mstest.testframework\\4.0.1\\mstest.testframework.4.0.1.nupkg.sha512",
-    "C:\\Users\\morga\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\morga\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\morga\\.nuget\\packages\\system.drawing.common\\10.0.2\\system.drawing.common.10.0.2.nupkg.sha512",
+    "C:\\Users\\morga\\.nuget\\packages\\tesseract\\5.2.0\\tesseract.5.2.0.nupkg.sha512",
+    "C:\\Users\\morga\\.nuget\\packages\\tesseract.drawing\\5.2.0\\tesseract.drawing.5.2.0.nupkg.sha512"
   ],
   "logs": []
 }
