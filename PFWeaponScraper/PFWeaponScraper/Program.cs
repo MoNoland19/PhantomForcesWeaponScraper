@@ -1,46 +1,55 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices;
-using System.Threading;
-using PFWeaponScraper.Config;
+using PFWeaponScraper.Input;
 using PFWeaponScraper.OCR;
 using PFWeaponScraper.Screen;
+using PFWeaponScraper.Services;
+using PFWeaponScraper.Storage;
 
 class Program
 {
     static void Main()
     {
-        // Fix DPI scaling (CRITICAL for correct capture)
         SetProcessDPIAware();
 
-        Console.WriteLine("OCR TEST HARNESS");
-        Console.WriteLine("Focus the GAME WINDOW in 5 seconds...");
-        Thread.Sleep(1000);
+        // OneDrive Desktop path
+        string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+        string dataDir = Path.Combine(desktopPath, "PFWeaponScraper");
 
-        var capture = new ScreenCaptureService();
-        var ocr = new OcrReader();
+        Directory.CreateDirectory(dataDir);
 
-        TestRegion(capture, ocr, ScreenRegions.GunName, "Gun Name");
-        TestRegion(capture, ocr, ScreenRegions.Optic, "Optic");
-        TestRegion(capture, ocr, ScreenRegions.Underbarrel, "Underbarrel");
-        TestRegion(capture, ocr, ScreenRegions.Barrel, "Barrel");
-        TestRegion(capture, ocr, ScreenRegions.Other, "Other");
-        TestRegion(capture, ocr, ScreenRegions.Ammo, "Ammo");
+        string filePath = Path.Combine(dataDir, "PFLoadouts.json");
 
-        Console.WriteLine();
-        Console.WriteLine("OCR test complete.");
+        var captureService = new WeaponCaptureService(
+            new ScreenCaptureService(),
+            new OcrReader(),
+            new WeaponBuilder()
+        );
+
+        var repository = new WeaponRepository(filePath);
+
+        using var hotkey = new HotkeyListener(() =>
+        {
+            try
+            {
+                var weapon = captureService.CaptureWeapon();
+                repository.AddWeapon(weapon);
+                repository.Save();
+
+                Console.WriteLine($"Captured: {weapon.GunName}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Capture failed: {ex.Message}");
+            }
+        });
+
+        Console.WriteLine("PFWeaponScraper running");
+        Console.WriteLine("Press Alt + L to capture loadout");
+        Console.WriteLine("Press ENTER to exit");
+
         Console.ReadLine();
-    }
-
-    private static void TestRegion(
-        ScreenCaptureService capture,
-        OcrReader ocr,
-        RelativeRegion region,
-        string label)
-    {
-        using var image = capture.CaptureRegion(region);
-        string text = ocr.ReadText(image);
-
-        Console.WriteLine($"{label,-12}: [{text}]");
     }
 
     [DllImport("user32.dll")]

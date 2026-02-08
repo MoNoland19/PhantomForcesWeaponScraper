@@ -1,6 +1,8 @@
-﻿namespace PFWeaponScraper.OCR;
+﻿using System.Drawing;
 
-public class IScreenTextReader
+namespace PFWeaponScraper.OCR;
+
+public interface IScreenTextReader
 {
-    
+    string ReadText(Bitmap image);
 }

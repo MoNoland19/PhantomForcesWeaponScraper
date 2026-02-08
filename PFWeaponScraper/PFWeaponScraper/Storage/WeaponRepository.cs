@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -9,61 +8,36 @@ namespace PFWeaponScraper.Storage;
 
 public class WeaponRepository
 {
-    private readonly string _filePath;
+    private readonly string _path;
     private readonly List<Weapon> _weapons;
 
-    public IReadOnlyList<Weapon> Weapons => _weapons.AsReadOnly();
+    public IReadOnlyList<Weapon> Weapons => _weapons;
 
-    public WeaponRepository(string filePath)
+    public WeaponRepository(string path)
     {
-        _filePath = filePath;
-        _weapons = LoadFromFile();
+        _path = path;
+        _weapons = File.Exists(path)
+            ? JsonSerializer.Deserialize<List<Weapon>>(File.ReadAllText(path)) ?? []
+            : [];
     }
-
-    /* -------------------- Public API -------------------- */
 
     public void AddWeapon(Weapon weapon)
     {
+        if (_weapons.Any(w =>
+                w.GunName == weapon.GunName &&
+                w.Attachments.SequenceEqual(weapon.Attachments)))
+            return;
+
         _weapons.Add(weapon);
-        SortWeapons();
-        SaveToFile();
-    }
-
-    public void Clear()
-    {
-        _weapons.Clear();
-        SaveToFile();
-    }
-
-    /* -------------------- Internal Logic -------------------- */
-
-    private List<Weapon> LoadFromFile()
-    {
-        if (!File.Exists(_filePath))
-            return new List<Weapon>();
-
-        string json = File.ReadAllText(_filePath);
-
-        if (string.IsNullOrWhiteSpace(json))
-            return new List<Weapon>();
-
-        return JsonSerializer.Deserialize<List<Weapon>>(json)
-               ?? new List<Weapon>();
-    }
-
-    private void SaveToFile()
-    {
-        var options = new JsonSerializerOptions
-        {
-            WriteIndented = true
-        };
-
-        string json = JsonSerializer.Serialize(_weapons, options);
-        File.WriteAllText(_filePath, json);
-    }
-
-    private void SortWeapons()
-    {
         _weapons.Sort();
+    }
+
+    public void Save()
+    {
+        File.WriteAllText(_path,
+            JsonSerializer.Serialize(_weapons, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            }));
     }
 }

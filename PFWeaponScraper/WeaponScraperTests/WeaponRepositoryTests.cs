@@ -120,26 +120,4 @@ public class WeaponRepositoryTests
 
         Assert.AreEqual("Vandal", repo.Weapons[2].GunName);
     }
-
-    [TestMethod]
-    public void Clear_RemovesAllWeapons_AndClearsFile()
-    {
-        var repo = new WeaponRepository(_testFilePath);
-
-        repo.AddWeapon(new Weapon(
-            "Phantom",
-            "Scope",
-            "None",
-            "None",
-            "None",
-            "None"
-        ));
-
-        repo.Clear();
-
-        Assert.AreEqual(0, repo.Weapons.Count);
-
-        string json = File.ReadAllText(_testFilePath);
-        Assert.AreEqual("[]", json.Trim());
-    }
 }
