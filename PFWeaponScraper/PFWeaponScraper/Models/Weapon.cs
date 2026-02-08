@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Text.Json.Serialization;
-
+﻿using System.Text.Json.Serialization;
 namespace PFWeaponScraper.Models;
 
 public class Weapon : IComparable<Weapon>
@@ -11,7 +6,13 @@ public class Weapon : IComparable<Weapon>
     public string GunName { get; }
     public IReadOnlyList<string> Attachments { get; }
 
-    // MAIN constructor (used by your app logic)
+    [JsonConstructor]
+    public Weapon(string GunName, IReadOnlyList<string> Attachments)
+    {
+        this.GunName = GunName.Trim();
+        this.Attachments = Normalize(Attachments);
+    }
+
     public Weapon(
         string gun,
         string optic,
@@ -21,31 +22,19 @@ public class Weapon : IComparable<Weapon>
         string ammo)
     {
         GunName = gun.Trim();
+        Attachments = Normalize(new[]
+        {
+            optic, barrel, underbarrel, other, ammo
+        });
+    }
 
-        Attachments = new List<string>
-            {
-                optic,
-                barrel,
-                underbarrel,
-                other,
-                ammo
-            }
+    private static IReadOnlyList<string> Normalize(IEnumerable<string> attachments)
+    {
+        return attachments
             .Where(a => !string.IsNullOrWhiteSpace(a))
             .Select(a => a.Trim())
             .Where(a => !string.Equals(a, "None", StringComparison.OrdinalIgnoreCase))
-            .ToList()
-            .AsReadOnly();
-    }
-
-    // JSON constructor (USED BY System.Text.Json)
-    [JsonConstructor]
-    public Weapon(string GunName, IReadOnlyList<string> Attachments)
-    {
-        this.GunName = GunName.Trim();
-
-        this.Attachments = Attachments
-            .Where(a => !string.IsNullOrWhiteSpace(a))
-            .Select(a => a.Trim())
+            .OrderBy(a => a, StringComparer.OrdinalIgnoreCase)
             .ToList()
             .AsReadOnly();
     }
@@ -59,8 +48,7 @@ public class Weapon : IComparable<Weapon>
         int gunCompare = string.Compare(
             GunName,
             other.GunName,
-            StringComparison.OrdinalIgnoreCase
-        );
+            StringComparison.OrdinalIgnoreCase);
 
         if (gunCompare != 0)
             return gunCompare;
@@ -68,11 +56,24 @@ public class Weapon : IComparable<Weapon>
         return other.AttachmentCount.CompareTo(AttachmentCount);
     }
 
-    public string ToJson()
+    public override bool Equals(object? obj)
     {
-        return JsonSerializer.Serialize(this, new JsonSerializerOptions
-        {
-            WriteIndented = true
-        });
+        if (obj is not Weapon other)
+            return false;
+
+        return GunName.Equals(other.GunName, StringComparison.OrdinalIgnoreCase)
+            && Attachments.SequenceEqual(
+                other.Attachments,
+                StringComparer.OrdinalIgnoreCase);
+    }
+
+    public override int GetHashCode()
+    {
+        int hash = GunName.ToLowerInvariant().GetHashCode();
+
+        foreach (var att in Attachments)
+            hash ^= att.ToLowerInvariant().GetHashCode();
+
+        return hash;
     }
 }

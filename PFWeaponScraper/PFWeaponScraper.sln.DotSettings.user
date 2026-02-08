@@ -7,14 +7,16 @@
     &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.Services.WeaponBuilderTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=59ebf475_002Daae5_002D4945_002D86a8_002D23a1ec24dc75/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="WeaponBuilderTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=59ebf475_002Daae5_002D4945_002D86a8_002D23a1ec24dc75/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="WeaponBuilderTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.Services.WeaponBuilderTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.WeaponRepositoryTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=92c1c449_002D9187_002D4344_002D8d46_002D1ca3fc0614d7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="WeaponClassTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=92c1c449_002D9187_002D4344_002D8d46_002D1ca3fc0614d7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="WeaponClassTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.Models.WeaponClassTests&lt;/TestId&gt;&#xD;
-    &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.Storage.WeaponRepositoryTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.WeaponTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.WeaponRepositoryTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;MSTest::31F71651-4CBA-458B-B78D-D6DA11FBEDA3::net10.0::PFWeaponScraper.Tests.HotkeyListenerTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PFWeaponScraper")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0ea7957257ef4cc17cf27ebd199b1ede34e9634")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32b6e487532ea10acbdfa17d5f8fbabdb3f272fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("PFWeaponScraper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PFWeaponScraper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

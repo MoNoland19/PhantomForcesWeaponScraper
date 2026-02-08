@@ -1,57 +1,64 @@
 ﻿using System;
-using System.IO;
-using System.Runtime.InteropServices;
 using PFWeaponScraper.Input;
 using PFWeaponScraper.OCR;
 using PFWeaponScraper.Screen;
 using PFWeaponScraper.Services;
 using PFWeaponScraper.Storage;
 
-class Program
+namespace PFWeaponScraper;
+
+internal static class Program
 {
     static void Main()
     {
-        SetProcessDPIAware();
-
-        // OneDrive Desktop path
-        string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-        string dataDir = Path.Combine(desktopPath, "PFWeaponScraper");
-
-        Directory.CreateDirectory(dataDir);
-
-        string filePath = Path.Combine(dataDir, "PFLoadouts.json");
-
-        var captureService = new WeaponCaptureService(
-            new ScreenCaptureService(),
-            new OcrReader(),
-            new WeaponBuilder()
+        var path = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
+            "OneDrive",
+            "Desktop",
+            "weapons.json"
         );
 
-        var repository = new WeaponRepository(filePath);
+        var repository = new WeaponRepository(path);
+        var builder = new WeaponBuilder();
+        var screen = new ScreenCaptureService();
+        var ocr = new OcrReader();
 
-        using var hotkey = new HotkeyListener(() =>
+        var captureService = new WeaponCaptureService(
+            screen,
+            ocr,
+            builder,
+            repository
+        );
+
+        var listener = new HotkeyListener();
+
+        listener.OnLPressed += () =>
         {
-            try
-            {
-                var weapon = captureService.CaptureWeapon();
-                repository.AddWeapon(weapon);
-                repository.Save();
+            var weapon = captureService.CaptureWeapon();
 
-                Console.WriteLine($"Captured: {weapon.GunName}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Capture failed: {ex.Message}");
-            }
-        });
+            Console.WriteLine("=== WEAPON TO ADD ===");
+            Console.WriteLine($"Gun: '{weapon.GunName}'");
+            Console.WriteLine($"Attachments ({weapon.AttachmentCount}):");
+            foreach (var a in weapon.Attachments)
+                Console.WriteLine($"  - {a}");
+
+            bool added = repository.AddWeapon(weapon);
+            repository.Save();
+
+            Console.WriteLine(
+                added
+                    ? "Weapon added and saved"
+                    : "Duplicate weapon — already exists"
+            );
+            Console.WriteLine();
+        };
+
+        listener.Start();
 
         Console.WriteLine("PFWeaponScraper running");
-        Console.WriteLine("Press Alt + L to capture loadout");
-        Console.WriteLine("Press ENTER to exit");
+        Console.WriteLine("Press L to capture weapon");
+        Console.WriteLine("Press ESC to exit");
 
-        Console.ReadLine();
+        while (Console.ReadKey(true).Key != ConsoleKey.Escape) { }
     }
-
-    [DllImport("user32.dll")]
-    private static extern bool SetProcessDPIAware();
 }

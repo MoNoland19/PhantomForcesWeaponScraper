@@ -5,119 +5,141 @@ using System;
 using System.IO;
 using System.Linq;
 
-namespace PFWeaponScraper.Tests.Storage;
-
-[TestClass]
-public class WeaponRepositoryTests
+namespace PFWeaponScraper.Tests
 {
-    private string _testFilePath = null!;
-
-    [TestInitialize]
-    public void Setup()
+    [TestClass]
+    public class WeaponRepositoryTests
     {
-        _testFilePath = Path.Combine(
-            Path.GetTempPath(),
-            $"weapon_repo_test_{Guid.NewGuid()}.json"
-        );
-    }
+        private string _testPath =
+            Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.Desktop),
+                "weaponsTest.json"
+            );
 
-    [TestCleanup]
-    public void Cleanup()
-    {
-        if (File.Exists(_testFilePath))
-            File.Delete(_testFilePath);
-    }
+        [TestInitialize]
+        public void Setup()
+        {
+            if (File.Exists(_testPath))
+                File.Delete(_testPath);
+        }
 
-    [TestMethod]
-    public void Constructor_CreatesEmptyRepository_WhenFileDoesNotExist()
-    {
-        var repo = new WeaponRepository(_testFilePath);
+        [TestCleanup]
+        public void Cleanup()
+        {
+            if (File.Exists(_testPath))
+                File.Delete(_testPath);
+        }
 
-        Assert.AreEqual(0, repo.Weapons.Count);
-    }
 
-    [TestMethod]
-    public void AddWeapon_AddsWeaponAndPersistsToFile()
-    {
-        var repo = new WeaponRepository(_testFilePath);
+        [TestMethod]
+        public void Constructor_FileDoesNotExist_StartsEmpty()
+        {
+            var repo = new WeaponRepository(_testPath);
 
-        var weapon = new Weapon(
-            "Phantom",
-            "Scope",
-            "Suppressor",
-            "None",
-            "Laser",
-            "None"
-        );
+            Assert.AreEqual(0, repo.Weapons.Count);
+        }
 
-        repo.AddWeapon(weapon);
+        [TestMethod]
+        public void AddWeapon_NewWeapon_IsAdded()
+        {
+            var repo = new WeaponRepository(_testPath);
 
-        Assert.AreEqual(1, repo.Weapons.Count);
-        Assert.IsTrue(File.Exists(_testFilePath));
+            var weapon = new Weapon(
+                "AK47",
+                "Reflex",
+                "Compensator",
+                "",
+                "",
+                ""
+            );
 
-        string json = File.ReadAllText(_testFilePath);
-        StringAssert.Contains(json, "Phantom");
-    }
+            bool added = repo.AddWeapon(weapon);
 
-    [TestMethod]
-    public void Repository_LoadsWeaponsFromExistingFile()
-    {
-        var repo1 = new WeaponRepository(_testFilePath);
+            Assert.IsTrue(added);
+            Assert.AreEqual(1, repo.Weapons.Count);
+        }
 
-        repo1.AddWeapon(new Weapon(
-            "Vandal",
-            "None",
-            "None",
-            "None",
-            "None",
-            "None"
-        ));
+        [TestMethod]
+        public void AddWeapon_DuplicateVariant_IsNotAdded()
+        {
+            var repo = new WeaponRepository(_testPath);
 
-        // create a new repository pointing to the same file
-        var repo2 = new WeaponRepository(_testFilePath);
+            var weapon1 = new Weapon(
+                "AK47",
+                "Reflex",
+                "Compensator",
+                "",
+                "",
+                ""
+            );
 
-        Assert.AreEqual(1, repo2.Weapons.Count);
-        Assert.AreEqual("Vandal", repo2.Weapons.First().GunName);
-    }
+            var weapon2 = new Weapon(
+                "AK47",
+                "Reflex",
+                "Compensator",
+                "",
+                "",
+                ""
+            );
 
-    [TestMethod]
-    public void AddWeapon_KeepsWeaponsSorted()
-    {
-        var repo = new WeaponRepository(_testFilePath);
+            repo.AddWeapon(weapon1);
+            bool added = repo.AddWeapon(weapon2);
 
-        repo.AddWeapon(new Weapon(
-            "Vandal",
-            "Suppressor",
-            "None",
-            "None",
-            "None",
-            "None"
-        ));
+            Assert.IsFalse(added);
+            Assert.AreEqual(1, repo.Weapons.Count);
+        }
 
-        repo.AddWeapon(new Weapon(
-            "Phantom",
-            "Suppressor",
-            "Grip",
-            "None",
-            "None",
-            "None"
-        ));
+        [TestMethod]
+        public void Save_ThenReload_PersistsWeapons()
+        {
+            var repo = new WeaponRepository(_testPath);
 
-        repo.AddWeapon(new Weapon(
-            "Phantom",
-            "None",
-            "None",
-            "None",
-            "None",
-            "None"
-        ));
+            var weapon = new Weapon(
+                "M4A1",
+                "ACOG",
+                "",
+                "",
+                "",
+                ""
+            );
 
-        Assert.AreEqual("Phantom", repo.Weapons[0].GunName);
-        Assert.AreEqual(2, repo.Weapons[0].AttachmentCount);
+            repo.AddWeapon(weapon);
+            repo.Save();
 
-        Assert.AreEqual("Phantom", repo.Weapons[1].GunName);
-        Assert.AreEqual(0, repo.Weapons[1].AttachmentCount);
+            var reloadedRepo = new WeaponRepository(_testPath);
 
-        Assert.AreEqual("Vandal", repo.Weapons[2].GunName);
+            Assert.AreEqual(1, reloadedRepo.Weapons.Count);
+            Assert.AreEqual("M4A1", reloadedRepo.Weapons.First().GunName);
+        }
+
+        [TestMethod]
+        public void Weapons_AreSortedByNameThenAttachmentCount()
+        {
+            var repo = new WeaponRepository(_testPath);
+
+            repo.AddWeapon(new Weapon(
+                "AK47",
+                "Reflex",
+                "",
+                "",
+                "",
+                ""
+            ));
+
+            repo.AddWeapon(new Weapon(
+                "AK47",
+                "Reflex",
+                "Compensator",
+                "Grip",
+                "",
+                ""
+            ));
+
+            var weapons = repo.Weapons.ToList();
+
+            Assert.AreEqual(2, weapons.Count);
+            Assert.AreEqual(3, weapons[0].AttachmentCount); // more attachments first
+            Assert.AreEqual(1, weapons[1].AttachmentCount);
+        }
     }
 }
